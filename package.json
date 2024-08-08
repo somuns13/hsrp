@@ -1,0 +1,18 @@
+{
+  "name": "vcc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "rcmpcli": "./bin/index.js"
+  },
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^8.2.6"
+  }
+}
