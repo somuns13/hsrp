@@ -5,7 +5,7 @@ const { FILE_TYPE_LIST } = require('../dic/index')
 const { consoleFn, formatDate } = require('../utils')
 const { createVueFile, updateRouteFile } = require('./createFile')
 
-const rcmpCli = (project, args) => {
+const hsrp = (project, args) => {
   if (argvs && argvs.length > 0) {
     if (argvs.length >= 4) {
       const fileId = argvs[0]
@@ -40,4 +40,4 @@ const rcmpCli = (project, args) => {
   }
 }
 
-module.exports = rcmpCli
+module.exports = hsrp

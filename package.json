@@ -1,14 +1,15 @@
 {
-  "name": "rcmpCli",
+  "name": "hsrp",
   "version": "1.0.0",
-  "description": "",
+  "private": false,
+  "description": "模板文件生成",
   "main": "index.js",
   "bin": {
-    "rcmpcli": "./bin/index.js"
+    "hsrp": "./bin/index.js"
   },
   "scripts": {},
-  "author": "",
-  "license": "ISC",
+  "author": "F13",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^11.1.0",
