@@ -4,7 +4,6 @@
     :title="config.title || '新增'"
     :width="800"
     :maskClosable="false"
-    :allowCopy="true"
     transfer
     @on-close="handleClose"
     @on-cancel="handleClose"
@@ -29,6 +28,7 @@
 
 <script>
 export default {
+  name: '%tmp%',
   props: {
     config: {
       type: Object,

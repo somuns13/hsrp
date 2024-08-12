@@ -1,5 +1,5 @@
 {
-  "name": "vcc",
+  "name": "rcmpCli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,5 +14,10 @@
     "commander": "^11.1.0",
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.6"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^8.57.0",
+    "eslint-plugin-node": "^11.1.0"
   }
 }
