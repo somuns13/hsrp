@@ -5,7 +5,7 @@ const { FILE_TYPE_LIST } = require('../dic')
 const { getRandom } = require('../utils/utils')
 const curPath = process.cwd()
 
-const createVueFile = (fileId, fileName, filePath, fileType) => {
+const createVueFile = (fileId, fileName, filePath, fileType, cb) => {
   try {
     fileName = fileName.includes('.vue') ? fileName.replace('.vue', '') : fileName
     const compTmpPath = path.join(__dirname, `../components/${fileType}.vue`)
@@ -14,13 +14,14 @@ const createVueFile = (fileId, fileName, filePath, fileType) => {
       let fileInfo = fs.readFileSync(compTmpPath, 'utf-8')
       fileInfo = fileInfo.replace('%tmp%', fileId)
       createFileFn(fileInfo, targetPath, _ => {
-        consoleFn(`${fileName}.vue文件创建成功，如文件中存在apiConfig参数，请及时进行修改，否则会导致请求异常！！！！！！`, 'cyan', `CREATE FILE SUCCESS：`)
+        consoleFn(`\nCREATE FILE SUCCESS：${fileName}.vue文件创建成功，如文件中存在apiConfig参数，请及时进行修改，否则会导致请求异常！！！！！！\n`, 'cyan')
+        cb && cb()
       })
     } else {
-      consoleFn(`不存在${fileType}模板文件； PS：当前支持的模板包含${FILE_TYPE_LIST.join('、')}`, 'red', `ERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：`)
+      consoleFn(`\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：不存在${fileType}模板文件； PS：当前支持的模板包含${FILE_TYPE_LIST.join('、')}\n`, 'red')
     }
   } catch (err) {
-    consoleFn(err, 'red', `ERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：`)
+    consoleFn(`ERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：${err}`, 'red')
   }
 }
 
@@ -37,9 +38,8 @@ const updateRouteFile = (fileId, fileName, filePath) => {
         newRouteInfoStr = `{ \n${newRouteInfoStr}\n${newItem}\n }`
         routeInfo = routeInfo.replace(reg, newRouteInfoStr)
         fs.writeFileSync(routeFilePath, routeInfo)
-        // console.log(newRouteInfo[0], newRouteInfo[1], newRouteInfo.length)
       } else {
-        consoleFn(`\nWARNING：菜单编号【${fileId}】已存在，不支持创建相同菜单编号的路由\n`, 'magenta')
+        consoleFn(`WARNING：菜单编号【${fileId}】已存在，不支持创建相同菜单编号的路由\n`, 'yellow')
       }
     }
   }

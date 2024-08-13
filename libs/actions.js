@@ -1,7 +1,7 @@
 const inquirer = require('inquirer')
 const argvs = process.argv.slice(2)
 
-const { FILE_TYPE_LIST } = require('../dic/index')
+const { FILE_TYPE_LIST, TMP_INFO } = require('../dic/index')
 const { consoleFn, formatDate } = require('../utils')
 const { createVueFile, updateRouteFile } = require('./createFile')
 
@@ -11,13 +11,14 @@ const hsrp = (project, args) => {
       const fileId = argvs[0]
       const fileName = argvs[1]
       const filePath = argvs[2]
-      const fileType = argvs[3]
+      const fileType = TMP_INFO[argvs[3]]
       const isRoute = argvs[4] !== '-c'
-      if (!FILE_TYPE_LIST.includes(fileType)) {
+      if (!fileType) {
         return consoleFn(`不存在${fileType}模板文件； PS：当前支持的模板包含${FILE_TYPE_LIST.join('、')}\n`, 'red', `\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：`)
       }
-      createVueFile(fileId, fileName, filePath, fileType)
-      isRoute && updateRouteFile(fileId, fileName, filePath)
+      createVueFile(fileId, fileName, filePath, fileType, _ => {
+        isRoute && updateRouteFile(fileId, fileName, filePath)
+      })
     }
   } else {
     // 命令行的执行逻辑代码,数组中每一个对象表示一个问题
@@ -34,8 +35,9 @@ const hsrp = (project, args) => {
       params.filePath = params.filePath || '/src'
       params.fileId = params.fileId.trim() || params.fileName
       const isRoute = params.isRoute === '是'
-      createVueFile(params.fileId, params.fileName, params.filePath, params.fileType)
-      isRoute && updateRouteFile(params.fileId, params.fileName, params.filePath)
+      createVueFile(params.fileId, params.fileName, params.filePath, params.fileType, _ => {
+        isRoute && updateRouteFile(params.fileId, params.fileName, params.filePath)
+      })
     })
   }
 }

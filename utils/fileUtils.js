@@ -147,8 +147,6 @@ const createFileFn = (info, targetPath, cb = null) => {
   }
 }
 
-
-
 module.exports = {
   colorize,
   removeFileOrFolder,
