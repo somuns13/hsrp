@@ -10,7 +10,9 @@ const TMP_INFO = {
   sq: 'rcmpSimpleQuery',
   rcmpSimpleQuery: 'rcmpSimpleQuery',
   rst: 'rcmpSearchTemplate',
-  rcmpSearchTemplate: 'rcmpSearchTemplate'
+  rcmpSearchTemplate: 'rcmpSearchTemplate',
+  wft: 'workflowTemplate',
+  workflowTemplate: 'workflowTemplate'
 }
 
 const FILE_TYPE_LIST = [...new Set(Object.values(TMP_INFO))]

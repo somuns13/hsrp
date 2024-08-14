@@ -39,6 +39,24 @@ hsrp 组件name 文件名称 文件路径 应用组件类型 [是否为组件/�
   "sq": "rcmpSimpleQuery",
   "rcmpSimpleQuery": "rcmpSimpleQuery",
   "rst": "rcmpSearchTemplate",
-  "rcmpSearchTemplate": "rcmpSearchTemplate"
+  "rcmpSearchTemplate": "rcmpSearchTemplate",
+  "wft": "workflowTemplate",
+  "workflowTemplate": "workflowTemplate"
 }
 ```
+
+#### 更新日志
+
+##### 1.1.1
+
+- 新增 workflowTemplate 模板文件
+
+##### 1.1.0
+
+- 新增 rcmpSearchTemplate，formDialogTmp 模板文件
+- 支持通过缩写进行组件创建(formDialogTmp(fdp)、rcmpRiskInfoTmp(rt)、rcmpSearchTmp(st)、rcmpSimpleManage(sm)、rcmpSimpleQuery(sq)、rcmpSearchTemplate(rst))
+- 优化脚本工具，错误提示优化等
+
+##### 1.0.0
+
+- 支持 rcmpSimpleQuery、rcmpSimpleManage、rcmpSearchTmp、rcmpRiskInfoTmp 模板文件

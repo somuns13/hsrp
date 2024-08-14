@@ -14,7 +14,7 @@ const createVueFile = (fileId, fileName, filePath, fileType, cb) => {
       let fileInfo = fs.readFileSync(compTmpPath, 'utf-8')
       fileInfo = fileInfo.replace('%tmp%', fileId)
       createFileFn(fileInfo, targetPath, _ => {
-        consoleFn(`\nCREATE FILE SUCCESS：${fileName}.vue文件创建成功，如文件中存在apiConfig参数，请及时进行修改，否则会导致请求异常！！！！！！\n`, 'cyan')
+        consoleFn(`\nCREATE FILE SUCCESS：${fileName}.vue文件创建成功，如文件中存在apiConfig等关于请求相关常量参数，请及时进行调整，否则会导致接口请求异常！\n`, 'cyan')
         cb && cb()
       })
     } else {
