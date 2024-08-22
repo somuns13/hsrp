@@ -14,6 +14,7 @@
     @closeWflTab="handleCloseWflTab"
   >
     <!-- 此处为表单页面 -->
+    <TestWflForm ref="wflForm"/>
   </WorkflowTemplate>
 </template>
 
@@ -51,6 +52,7 @@ export default {
       this.getBaseInfo(baseInfo, _this);
     },
     getBaseInfo(baseInfo, _this) {
+      const newBaseInfo = { ...baseInfo }
       if (!_this.viewMode && !this.isInitiate) {
         newBaseInfo.pre_handle_opinion = newBaseInfo.handle_opinion;
         newBaseInfo.handle_opinion = '';
@@ -69,12 +71,14 @@ export default {
     submitForm(actionVal, actionName, _this) {
       return new Promise((resolve, reject) => {
         if ((actionVal === 'goBack' || actionName === '退回') && !this.isInitiate) {
+          // 需wflForm组件内部实现validateField方法
           this.$refs['wflForm'].validateField(['handle_opinion']).then(_ => {
             this.handleSubmitProcess(actionVal, actionName, _this, resolve, reject);
           }).catch(_ => {
             this.setLoadingStatus(false);
           });
         } else {
+          // 需wflForm组件内部实现validateField方法
           this.$refs['wflForm'].validator().then(_ => {
             if (this.isInitiate) {
               this.handleStartProcess(resolve, reject);
@@ -88,6 +92,7 @@ export default {
       });
     },
     handleSubmitProcess(actionVal, actionName, _this, resolve, reject) {
+      // 需wflForm组件内部实现getFormData方法
       const formInfo = this.$refs['wflForm'].getFormData();
       const params = {
         process_instance_id: _this.processInstanceId,
@@ -99,8 +104,15 @@ export default {
         })
       };
       this.setLoadingStatus(true);
+      this.$http.post(`${this.wlServer}/submitTask`, params).catch(_ => {
+        reject();
+      }).finally(_ => {
+        resolve(formInfo.handle_opinion);
+        this.setLoadingStatus(false);
+      });
     },
     handleStartProcess(resolve, reject) {
+      // 需wflForm组件内部实现getFormData方法
       const formInfo = this.$refs['wflForm'].getFormData();
       const params = {
         form_info: JSON.stringify({
@@ -109,6 +121,12 @@ export default {
         is_auto: this.isAuto // 发起流程是否自动跳过第一个节点
       };
       this.setLoadingStatus(true);
+      this.$http.post(`${this.wlServer}/startWithCallBack`, params).catch(_ => {
+        reject();
+      }).finally(_ => {
+        resolve(formInfo.handle_opinion);
+        this.setLoadingStatus(false);
+      });
     },
     handleCloseWflTab() {
     },

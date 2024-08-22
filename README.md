@@ -11,7 +11,7 @@ npm i hsrp -g
 ### 使用方式
 
 ```shell
-hsrp 组件name 文件名称 文件路径 应用组件类型 [是否为组件/路由]
+hsrp 组件name 文件名称 文件路径 组件类型 [是否为组件/路由]
 
 # 创建testInfoTableList组件
 `hsrp hsy_test_0001 testInfoTableList /src/views/testFolder/ rcmpRiskInfoTmp/rt -c`
@@ -46,6 +46,10 @@ hsrp 组件name 文件名称 文件路径 应用组件类型 [是否为组件/�
 ```
 
 #### 更新日志
+
+##### 1.1.3
+
+- 完善`workflowTemplate`模板文件；简化文件路径相关内容，可省略src，例：`hsrp hsy_test_0001 testInfoTableList views/testFolder/ rcmpRiskInfoTmp/rt -c`，将会自动创建文件至`src/views/testFolder/`目录下
 
 ##### 1.1.2
 

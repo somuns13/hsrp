@@ -10,15 +10,20 @@ const hsrp = (project, args) => {
     if (argvs.length >= 4) {
       const fileId = argvs[0]
       const fileName = argvs[1]
-      const filePath = argvs[2]
+      let filePath = argvs[2]
       const fileType = TMP_INFO[argvs[3]]
       const isRoute = argvs[4] !== '-c'
       if (!fileType) {
-        return consoleFn(`不存在${fileType}模板文件； PS：当前支持的模板包含${FILE_TYPE_LIST.join('、')}\n`, 'red', `\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：`)
+        return consoleFn(`\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：不存在${fileType}模板文件； PS：当前支持的模板包含${FILE_TYPE_LIST.join('、')}\n`, 'red')
+      }
+      if (!filePath.startsWith('/src')) {
+        filePath = `/src/${filePath}`
       }
       createVueFile(fileId, fileName, filePath, fileType, _ => {
         isRoute && updateRouteFile(fileId, fileName, filePath)
       })
+    } else {
+      return consoleFn(`\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：参数异常，正确格式为【hsrp 组件name 文件名称 文件路径 组件类型 [是否为组件/路由]】\n`, 'red')
     }
   } else {
     // 命令行的执行逻辑代码,数组中每一个对象表示一个问题
@@ -30,9 +35,12 @@ const hsrp = (project, args) => {
       { type: 'list', name: 'isRoute', choices: ['是', '否'], message: '是否添加路由信息：' }
     ]).then(params => {
       if (!params.fileName || !params.fileName.trim()) {
-        return consoleFn(`文件名称不存在\n`, 'red', `\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：`)
+        return consoleFn(`\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：文件名称不存在\n`, 'red')
       }
       params.filePath = params.filePath || '/src'
+      if (!params.filePath.startsWith('/src')) {
+        params.filePath = `/src/${params.filePath}`
+      }
       params.fileId = params.fileId.trim() || params.fileName
       const isRoute = params.isRoute === '是'
       createVueFile(params.fileId, params.fileName, params.filePath, params.fileType, _ => {
