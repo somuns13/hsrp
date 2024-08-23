@@ -12,7 +12,8 @@ const TMP_INFO = {
   rst: 'rcmpSearchTemplate',
   rcmpSearchTemplate: 'rcmpSearchTemplate',
   wft: 'workflowTemplate',
-  workflowTemplate: 'workflowTemplate'
+  workflowTemplate: 'workflowTemplate',
+  vue: 'vueTmp'
 }
 
 const FILE_TYPE_LIST = [...new Set(Object.values(TMP_INFO))]
