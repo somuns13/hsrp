@@ -1,5 +1,5 @@
 const TMP_INFO = {
-  fdp: 'formDialogTmp',
+  fdt: 'formDialogTmp',
   formDialogTmp: 'formDialogTmp',
   rt: 'rcmpRiskInfoTmp',
   rcmpRiskInfoTmp: 'rcmpRiskInfoTmp',

@@ -1,6 +1,6 @@
 {
   "name": "hsrp",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "private": false,
   "description": "模板文件生成",
   "main": "index.js",

@@ -22,15 +22,20 @@ hsrp 组件name 文件名称 文件路径 组件类型 [是否为组件/路由]
 # 方式1 或直接命令行输入`hsrp`根据对应提示进行创建
 `hsrp`
 
+
+# 帮助
+`hsrp -h`
+`hsrp --help`
+
 ```
 
 ## 支持的模板文件
 
-> 包含简写、全写，如采用方式1进行组件创建时，可使用简写
+> 包含简写、全写，如采用方式 1 进行组件创建时，可使用简写
 
 ```json
 {
-  "fdp": "formDialogTmp",
+  "fdt": "formDialogTmp",
   "formDialogTmp": "formDialogTmp",
   "rt": "rcmpRiskInfoTmp",
   "rcmpRiskInfoTmp": "rcmpRiskInfoTmp",
@@ -48,13 +53,14 @@ hsrp 组件name 文件名称 文件路径 组件类型 [是否为组件/路由]
 }
 ```
 
-
-
-------
-
-
+---
 
 ## 更新日志
+
+### 1.1.5
+
+- 生成表单弹窗模板文件简写`fdp`指令调整为`fdt`
+- `hsrp -h` 增加帮助信息（模板添加说明）
 
 ### 1.1.4
 
