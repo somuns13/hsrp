@@ -6,6 +6,7 @@ const simpleNames = Object.keys(TMP_INFO).filter(item => !FILE_TYPE_LIST.include
 
 const cyanFn = (str) => colorize(str, 'cyan')
 const yellowFn = (str) => colorize(str, 'yellow')
+const magentaFn = (str) => colorize(str, 'magenta')
 
 const helpFn = () => {
   program.version(packageJson.version, cyanFn('-V, --version'), yellowFn('查看当前插件版本'))
@@ -15,15 +16,18 @@ const helpFn = () => {
     .option(cyanFn('-c'), yellowFn('创建为组件，不修改路由文件'))
     .option(cyanFn('fileType(简写)'), yellowFn(`${simpleNames.join('、')}`))
 
-  program.option(cyanFn('\n\n模板类型（fileType）'), yellowFn('说明'))
-    .option(cyanFn('formDialogTmp'), yellowFn('表单弹窗模板'))
-    .option(cyanFn('rcmpRiskInfoTmp'), yellowFn('4.0指标模板'))
-    .option(cyanFn('rcmpSearchTmp'), yellowFn('表格查询模板'))
-    .option(cyanFn('rcmpSimpleManage'), yellowFn('表格查询模板（包含新增、修改等）'))
-    .option(cyanFn('rcmpSimpleQuery'), yellowFn('表格查询模板（已废弃）'))
-    .option(cyanFn('rcmpSearchTemplate'), yellowFn('表格查询模板（非xml形式）'))
-    .option(cyanFn('workflowTemplate'), yellowFn('流程表单模板'))
-    .option(cyanFn('vueTmp'), yellowFn('vue模板'))
+  program.option(cyanFn('\n\n模板类型(fileType)'), yellowFn('说明'))
+    .option(magentaFn('xml相关模板'), yellowFn(''))
+    .option(cyanFn('rcmpRiskInfoTmp'), yellowFn('4.0指标模板(xml)'))
+    .option(cyanFn('rcmpSearchTmp'), yellowFn('表格查询模板(xml)'))
+    .option(cyanFn('rcmpSimpleManage'), yellowFn('表格查询模板(包含新增、修改等)(xml)'))
+    .option(cyanFn('rcmpSimpleQuery'), yellowFn('表格查询模板(已废弃)(xml)'))
+    .option(magentaFn('非xml相关模板'), yellowFn(''))
+    .option(cyanFn('rcmpSearchTemplate'), yellowFn('表格查询模板(非xml)'))
+    .option(cyanFn('multiTabTmp'), yellowFn('多tab表格(非xml)'))
+    .option(cyanFn('formDialogTmp'), yellowFn('表单弹窗模板(非xml)'))
+    .option(cyanFn('workflowTemplate'), yellowFn('流程表单模板(非xml)'))
+    .option(cyanFn('vueTmp'), yellowFn('vue模板(非xml)\n'))
 }
 
 module.exports = helpFn

@@ -7,13 +7,15 @@ const TMP_INFO = {
   rcmpSearchTmp: 'rcmpSearchTmp',
   sm: 'rcmpSimpleManage',
   rcmpSimpleManage: 'rcmpSimpleManage',
-  sq: 'rcmpSimpleQuery',
-  rcmpSimpleQuery: 'rcmpSimpleQuery',
   rst: 'rcmpSearchTemplate',
   rcmpSearchTemplate: 'rcmpSearchTemplate',
   wft: 'workflowTemplate',
   workflowTemplate: 'workflowTemplate',
-  vue: 'vueTmp'
+  mtt: 'multiTabTmp',
+  multiTabTmp: 'multiTabTmp',
+  vue: 'vueTmp',
+  sq: 'rcmpSimpleQuery',
+  rcmpSimpleQuery: 'rcmpSimpleQuery'
 }
 
 const FILE_TYPE_LIST = [...new Set(Object.values(TMP_INFO))]

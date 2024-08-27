@@ -1,8 +1,11 @@
 {
   "name": "hsrp",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "private": false,
-  "description": "模板文件生成",
+  "keywords": [
+    "vue"
+  ],
+  "description": "Template file generation",
   "main": "index.js",
   "bin": {
     "hsrp": "./bin/index.js"
