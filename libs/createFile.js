@@ -33,8 +33,10 @@ const updateRouteFile = (fileId, fileName, filePath) => {
     if (routeInfo.match(reg)[1]) {
       let newRouteInfoStr = routeInfo.match(reg)[1]
       if (!newRouteInfoStr.includes(fileId)) {
-        const isExistComma = newRouteInfoStr.replace(/\n/g, '').endsWith(',')
-        const newItem = `${isExistComma ? '' : ','}${fileId}: () => import(/* webpackChunkName: "${fileName}_${getRandom(12)}" */ "${filePath.replace('/src', '@')}${fileName}.vue")`
+        const isExistComma = newRouteInfoStr.replace(/\n/g, '').trim().endsWith(',')
+        let newFilePath = filePath.replace('/src', '@')
+        newFilePath = newFilePath.endsWith('/') ? newFilePath : `${newFilePath}/`
+        const newItem = `${isExistComma ? '' : ','}${fileId}: () => import(/* webpackChunkName: "${fileName}_${getRandom(12)}" */ "${newFilePath}${fileName}.vue")`
         newRouteInfoStr = `{ \n${newRouteInfoStr}\n${newItem}\n }`
         routeInfo = routeInfo.replace(reg, newRouteInfoStr)
         fs.writeFileSync(routeFilePath, routeInfo)
