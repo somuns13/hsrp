@@ -9,7 +9,7 @@ const yellowFn = (str) => colorize(str, 'yellow')
 const magentaFn = (str) => colorize(str, 'magenta')
 
 const helpFn = () => {
-  program.version(packageJson.version, cyanFn('-V, --version'), yellowFn('查看当前插件版本'))
+  program.version(packageJson.version, '-V, --version', '查看当前插件版本')
   program.option(cyanFn('hsrp'), yellowFn('根据提示创建模板文件(全量模板)'))
     .option(cyanFn('hsrp -x'), yellowFn('根据提示创建模板文件(xml模板)'))
     .option(cyanFn('hsrp -t'), yellowFn('根据提示创建模板文件(非xml模板)'))
@@ -30,6 +30,7 @@ const helpFn = () => {
     .option(cyanFn('formDialogTmp'), yellowFn('表单弹窗模板(非xml)'))
     .option(cyanFn('workflowTemplate'), yellowFn('流程表单模板(非xml)'))
     .option(cyanFn('vueTmp'), yellowFn('vue模板(非xml)\n'))
+    .helpOption('-h, --help', '查看帮助')
 }
 
 module.exports = helpFn
