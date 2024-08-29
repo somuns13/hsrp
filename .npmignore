@@ -1,0 +1,9 @@
+.idea
+.vscode
+.git
+.svn
+.eslintrc.js
+.gitignore
+.DS_Store
+node_modules
+dist

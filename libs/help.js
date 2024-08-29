@@ -29,6 +29,7 @@ const helpFn = () => {
     .option(cyanFn('multiTabTmp'), yellowFn('多tab表格(非xml)'))
     .option(cyanFn('formDialogTmp'), yellowFn('表单弹窗模板(非xml)'))
     .option(cyanFn('workflowTemplate'), yellowFn('流程表单模板(非xml)'))
+    .option(cyanFn('rcmpSplitTable'), yellowFn('上下表格类型模板(非xml)'))
     .option(cyanFn('vueTmp'), yellowFn('vue模板(非xml)\n'))
     .helpOption('-h, --help', '查看帮助')
 }

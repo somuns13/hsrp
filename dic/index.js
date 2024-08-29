@@ -7,6 +7,8 @@ const NO_XML_TMP_INFO = {
   workflowTemplate: 'workflowTemplate',
   mtt: 'multiTabTmp',
   multiTabTmp: 'multiTabTmp',
+  rsltb: 'rcmpSplitTable',
+  rcmpSplitTable: 'rcmpSplitTable',
   vue: 'vueTmp'
 }
 
