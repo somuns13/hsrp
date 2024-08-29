@@ -10,24 +10,41 @@ npm i hsrp -g
 
 ## 💻 使用方式
 
-```shell
-hsrp 组件name 文件名称 文件路径 组件类型 [是否为组件/路由]
+> hsrp 组件 name 文件名称 文件路径 组件类型 [是否为组件/路由]
 
-# 方式1 创建testInfoTableList组件
-`hsrp hsy_test_0001 testInfoTableList /views/testFolder/ rt -c`
+### 1️⃣ 方式 1
 
-# 方式1 创建testInfoTableList路由文件
-`hsrp hsy_test_0001 testInfoTableList /views/testFolder/ rcmpRiskInfoTmp`
+> 创建 testInfoTableList 组件
+>
+> `hsrp hsy_test_0001 testInfoTableList /views/testFolder/ rt -c`
+>
+> 创建 testInfoTableList 路由文件
+>
+> `hsrp hsy_test_0001 testInfoTableList /views/testFolder/ rcmpRiskInfoTmp`
 
-# 方式1 或直接命令行输入`hsrp`根据对应提示进行创建
-`hsrp`
+### 2️⃣ 方式 2
 
+> 输入`hsrp`根据对应提示进行创建
+>
+> `hsrp`
 
-# 帮助
-`hsrp -h`
-`hsrp --help`
+### 3️⃣ 方式 3
 
-```
+> 输入`hsrp`根据对应提示创建 xml 类型模板文件
+>
+> `hsrp -x`
+
+### 4️⃣ 方式 4
+
+> 输入`hsrp`根据对应提示创建非 xml 类型模板文件
+>
+> `hsrp -t`
+
+### 🅾 查看帮助信息
+
+> `hsrp -h`
+>
+> `hsrp --help`
 
 ## 👉 支持的模板文件
 
@@ -45,7 +62,15 @@ hsrp 组件name 文件名称 文件路径 组件类型 [是否为组件/路由]
 |    `multiTabTmp`     | `mtt` |           多 tab 模板            |
 |       `vueTmp`       | `vue` |             vue 模板             |
 
+---
+
 ## ⚙️ 更新日志
+
+### 🔺1.2.0
+
+- 新增指令`hsrp -x`， 用于生成 xml 类型 模板文件
+- 新增指令`hsrp -t`， 用于生成 非 xml 类型 模板文件
+- 更新`hsrp -h` 帮助信息
 
 ### 🔺1.1.7
 

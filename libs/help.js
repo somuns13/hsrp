@@ -10,7 +10,9 @@ const magentaFn = (str) => colorize(str, 'magenta')
 
 const helpFn = () => {
   program.version(packageJson.version, cyanFn('-V, --version'), yellowFn('查看当前插件版本'))
-  program.option(cyanFn('hsrp'), yellowFn('根据提示创建模板文件'))
+  program.option(cyanFn('hsrp'), yellowFn('根据提示创建模板文件(全量模板)'))
+    .option(cyanFn('hsrp -x'), yellowFn('根据提示创建模板文件(xml模板)'))
+    .option(cyanFn('hsrp -t'), yellowFn('根据提示创建模板文件(非xml模板)'))
     .option(cyanFn('hsrp fileId fileName filePath fileType [-c]'), yellowFn('快捷创建模板文件'))
     .option(cyanFn('hsrp 组件name 文件名称 文件路径 应用组件类型 [是否为组件/路由]'))
     .option(cyanFn('-c'), yellowFn('创建为组件，不修改路由文件'))

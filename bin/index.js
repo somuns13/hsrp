@@ -5,11 +5,18 @@ const helpFn = require('../libs/help')
 
 helpFn()
 
-program.parseAsync = (argv) => {
-  if (argv.includes('-c')) {
-    const index = argv.indexOf('-c')
+const handleArgvFn = (argv, directive) => {
+  if (argv.includes(directive)) {
+    const index = argv.indexOf(directive)
     argv.splice(index, 2) // 删除-c及其后面的参数
   }
+  return argv
+}
+
+program.parseAsync = (argv) => {
+  handleArgvFn(argv, '-c')
+  handleArgvFn(argv, '-x')
+  handleArgvFn(argv, '-t')
   return program.parse(argv)
 }
 program.action(hsrp).parseAsync(process.argv)
