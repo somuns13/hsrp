@@ -15,8 +15,6 @@ const handleArgvFn = (argv, directive) => {
 
 program.parseAsync = (argv) => {
   handleArgvFn(argv, '-c')
-  handleArgvFn(argv, '-x')
-  handleArgvFn(argv, '-t')
   return program.parse(argv)
 }
 program.action(hsrp).parseAsync(process.argv)

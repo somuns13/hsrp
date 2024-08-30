@@ -54,15 +54,22 @@ const hsrpCreateFileSimple = () => {
   if (argvs.length >= 4) {
     simpleDirectiveCreateFileFn()
   } else if (argvs.length === 1) {
-    if (argvs[0] === '-x') {
+    if (argvs[0] === 'xml') {
       hsrpCreateFile(FILE_TYPE_LIST_XML)
-    } else if (argvs[0] === '-t') {
+    } else if (argvs[0] === 'tmp') {
       hsrpCreateFile(FILE_TYPE_LIST_NO_XML)
     } else {
-      return consoleFn(`\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：指令未定义，请使用hsrp -h 或点击 http://10.20.146.63:8080/pages/9bcc25 查看文档\n`, 'red')
+      return consoleFn(`ERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：【hsrp ${argvs.join(' ')}】指令未定义，请使用hsrp -h 或点击 http://10.20.146.63:8080/pages/9bcc25 或 https://www.npmjs.com/package/hsrp?activeTab=readme 查看使用文档`, 'red')
     }
   } else {
-    return consoleFn(`\nERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：参数异常，正确格式为【hsrp 组件name 文件名称 文件路径 组件类型 [是否为组件/路由]】\n`, 'red')
+    return consoleFn(`
+      ERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）： 【hsrp ${argvs.join(' ')}】指令未定义
+      快捷创建指令：【hsrp 组件name 文件名称 文件路径 组件类型 [是否为组件/路由]】
+      查看帮助文档：
+      1.使用指令【hsrp -h】
+      2.http://10.20.146.63:8080/pages/9bcc25 
+      3.https://www.npmjs.com/package/hsrp?activeTab=readme`,
+    'red')
   }
 }
 
