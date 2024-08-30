@@ -14,7 +14,7 @@ const createVueFile = (fileId, fileName, filePath, fileType, cb) => {
       let fileInfo = fs.readFileSync(compTmpPath, 'utf-8')
       fileInfo = fileInfo.replace('%tmp%', fileId)
       createFileFn(fileInfo, targetPath, _ => {
-        consoleFn(`\nCREATE FILE SUCCESS：${fileName}.vue文件创建成功(模板类型为${fileType})，如文件中存在apiConfig等关于请求相关常量参数，请及时进行调整，否则会导致接口请求异常！\n`, 'cyan')
+        consoleFn(`\n-----------------------CREATE FILE SUCCESS-----------------------\n\n${fileName}.vue文件创建成功(模板类型为${fileType})\n如文件中存在apiConfig等关于请求相关常量参数，请及时进行调整，否则会导致接口请求异常！\n\n-----------------------------------------------------------------\n`, 'cyan')
         cb && cb()
       })
     } else {
@@ -27,29 +27,34 @@ const createVueFile = (fileId, fileName, filePath, fileType, cb) => {
 
 const updateRouteFile = (fileId, fileName, filePath) => {
   const routeFilePath = path.join(curPath, '/src/router/asyncRouterComponent.js')
-  if (fs.existsSync(routeFilePath)) {
-    const reg = /\{([\s\S]*?)}/
-    let routeInfo = fs.readFileSync(routeFilePath).toString()
-    if (routeInfo.match(reg)[1]) {
-      let newRouteInfoStr = routeInfo.match(reg)[1].trim ? routeInfo.match(reg)[1].trim() : routeInfo.match(reg)[1]
-      if (!newRouteInfoStr.includes(fileId)) {
-        const isExistComma = newRouteInfoStr.replace(/\n/g, '').trim().endsWith(',')
-        if (!isExistComma) {
-          newRouteInfoStr = `${newRouteInfoStr},`
-        }
-        let newFilePath = filePath.replace('/src', '@')
-        newFilePath = newFilePath.endsWith('/') ? newFilePath : `${newFilePath}/`
-        const newItem = `${fileId}: () => import(/* webpackChunkName: "${newFilePath}${fileName}_${getRandom(12)}" */ '${newFilePath}${fileName}.vue')`
-        // 判断结尾是否存在换行符
-        const isLastN = newRouteInfoStr.endsWith('\n')
-        newRouteInfoStr = isLastN ? `{\n  ${newRouteInfoStr}  ${newItem}\n}` : `{\n  ${newRouteInfoStr}\n  ${newItem}\n}`
+  try {
+    if (fs.existsSync(routeFilePath)) {
+      const reg = /\{([\s\S]*?)}/
+      let routeInfo = fs.readFileSync(routeFilePath).toString()
+      if (routeInfo.match(reg)[1]) {
+        let newRouteInfoStr = routeInfo.match(reg)[1].trim ? routeInfo.match(reg)[1].trim() : routeInfo.match(reg)[1]
+        if (!newRouteInfoStr.includes(fileId)) {
+          const isExistComma = newRouteInfoStr.replace(/\n/g, '').trim().endsWith(',')
+          if (!isExistComma) {
+            newRouteInfoStr = `${newRouteInfoStr},`
+          }
+          let newFilePath = filePath.replace('/src', '@')
+          newFilePath = newFilePath.endsWith('/') ? newFilePath : `${newFilePath}/`
+          const newItem = `${fileId}: () => import(/* webpackChunkName: "${newFilePath}${fileName}_${getRandom(12)}" */ '${newFilePath}${fileName}.vue')`
+          // 判断结尾是否存在换行符
+          const isLastN = newRouteInfoStr.endsWith('\n')
+          newRouteInfoStr = isLastN ? `{\n  ${newRouteInfoStr}  ${newItem}\n}` : `{\n  ${newRouteInfoStr}\n  ${newItem}\n}`
 
-        routeInfo = routeInfo.replace(reg, newRouteInfoStr)
-        fs.writeFileSync(routeFilePath, routeInfo)
-      } else {
-        consoleFn(`WARNING：菜单编号【${fileId}】已存在，不支持创建相同菜单编号的路由\n`, 'yellow')
+          routeInfo = routeInfo.replace(reg, newRouteInfoStr)
+          fs.writeFileSync(routeFilePath, routeInfo)
+          consoleFn(`菜单编号【${fileId}】对应的路由信息添加成功！ \n 路由信息：${newItem}\n`, 'cyan')
+        } else {
+          consoleFn(`WARNING：菜单编号【${fileId}】已存在，不支持创建相同菜单编号的路由\n`, 'yellow')
+        }
       }
     }
+  } catch (err) {
+    consoleFn(`ERROR（${formatDate('', 'yyyy-MM-dd hh:mm:ss')}）：${err}`, 'red')
   }
 }
 
