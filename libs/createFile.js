@@ -31,13 +31,19 @@ const updateRouteFile = (fileId, fileName, filePath) => {
     const reg = /\{([\s\S]*?)}/
     let routeInfo = fs.readFileSync(routeFilePath).toString()
     if (routeInfo.match(reg)[1]) {
-      let newRouteInfoStr = routeInfo.match(reg)[1]
+      let newRouteInfoStr = routeInfo.match(reg)[1].trim ? routeInfo.match(reg)[1].trim() : routeInfo.match(reg)[1]
       if (!newRouteInfoStr.includes(fileId)) {
         const isExistComma = newRouteInfoStr.replace(/\n/g, '').trim().endsWith(',')
+        if (!isExistComma) {
+          newRouteInfoStr = `${newRouteInfoStr},`
+        }
         let newFilePath = filePath.replace('/src', '@')
         newFilePath = newFilePath.endsWith('/') ? newFilePath : `${newFilePath}/`
-        const newItem = `${isExistComma ? '' : ','}${fileId}: () => import(/* webpackChunkName: "${fileName}_${getRandom(12)}" */ "${newFilePath}${fileName}.vue")`
-        newRouteInfoStr = `{ \n${newRouteInfoStr}\n${newItem}\n }`
+        const newItem = `${fileId}: () => import(/* webpackChunkName: "${newFilePath}${fileName}_${getRandom(12)}" */ '${newFilePath}${fileName}.vue')`
+        // 判断结尾是否存在换行符
+        const isLastN = newRouteInfoStr.endsWith('\n')
+        newRouteInfoStr = isLastN ? `{\n  ${newRouteInfoStr}  ${newItem}\n}` : `{\n  ${newRouteInfoStr}\n  ${newItem}\n}`
+
         routeInfo = routeInfo.replace(reg, newRouteInfoStr)
         fs.writeFileSync(routeFilePath, routeInfo)
       } else {
