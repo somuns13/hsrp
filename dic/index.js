@@ -20,7 +20,10 @@ const XML_TMP_INFO = {
   sm: 'rcmpSimpleManage',
   rcmpSimpleManage: 'rcmpSimpleManage',
   sq: 'rcmpSimpleQuery',
-  rcmpSimpleQuery: 'rcmpSimpleQuery'
+  rcmpSimpleQuery: 'rcmpSimpleQuery',
+  // 5.0指标模板
+  rt5: 'rcmpRiskTmp',
+  rcmpRiskTmp: 'rcmpRiskTmp'
 }
 
 const TMP_INFO = { ...NO_XML_TMP_INFO, ...XML_TMP_INFO }
