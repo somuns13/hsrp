@@ -50,18 +50,19 @@ npm i hsrp -g
 
 > 包含简写、全写，采用方式 1 进行组件创建时，可使用简写
 
-|       文件类型       |  简写   |               说明               |
-| :------------------: | :-----: | :------------------------------: |
-|   `formDialogTmp`    |  `fdt`  |           表单弹窗模板           |
-|  `rcmpRiskInfoTmp `  |  `rt`   |           4.0 指标模板           |
-|   `rcmpSearchTmp `   |  `st`   |           表格查询模板           |
+|         文件类型         |   简写    |        说明        |
+|:--------------------:|:-------:|:----------------:|
+|   `formDialogTmp`    |  `fdt`  |      表单弹窗模板      |
+|  `rcmpRiskInfoTmp `  |  `rt`   |     4.0 指标模板     |
+|    `rcmpRiskTmp `    |  `rt5`  |     5.0 指标模板     |
+|   `rcmpSearchTmp `   |  `st`   |      表格查询模板      |
 | `rcmpSimpleManage `  |  `sm`   | 表格查询模板（包含新增、修改等） |
-|  `rcmpSimpleQuery`   |  `sq`   |      表格查询模板（已废弃）      |
-| `rcmpSearchTemplate` |  `rst`  |   表格查询模板（非 xml 类型）    |
-|  `workflowTemplate`  |  `wft`  |           流程表单模板           |
-|    `multiTabTmp`     |  `mtt`  |           多 tab 模板            |
-|   `rcmpSplitTable`   | `rsltb` |         上下表格类型模板         |
-|       `vueTmp`       |  `vue`  |             vue 模板             |
+|  `rcmpSimpleQuery`   |  `sq`   |   表格查询模板（已废弃）    |
+| `rcmpSearchTemplate` |  `rst`  | 表格查询模板（非 xml 类型） |
+|  `workflowTemplate`  |  `wft`  |      流程表单模板      |
+|    `multiTabTmp`     |  `mtt`  |     多 tab 模板     |
+|   `rcmpSplitTable`   | `rsltb` |     上下表格类型模板     |
+|       `vueTmp`       |  `vue`  |      vue 模板      |
 
 ---
 
