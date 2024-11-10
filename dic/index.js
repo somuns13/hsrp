@@ -13,10 +13,15 @@ const NO_XML_TMP_INFO = {
 }
 
 const XML_TMP_INFO = {
+  // 数据迁移（4.0转5.0指标模板）
   rt: 'rcmpRiskInfoTmp',
   rcmpRiskInfoTmp: 'rcmpRiskInfoTmp',
+  // 通用查询模板
   st: 'rcmpSearchTmp',
   rcmpSearchTmp: 'rcmpSearchTmp',
+  // 兼容通用查询，同时支持上下表格、多tab表格等形式
+  stp: 'rcmpSearchTmpPro',
+  rcmpSearchTmpPro: 'rcmpSearchTmpPro',
   sm: 'rcmpSimpleManage',
   rcmpSimpleManage: 'rcmpSimpleManage',
   sq: 'rcmpSimpleQuery',

@@ -23,6 +23,7 @@ const helpFn = () => {
     .option(cyanFn('rcmpRiskInfoTmp'), yellowFn('4.0指标模板(xml)'))
     .option(cyanFn('rcmpRiskTmp'), yellowFn('5.0指标模板(xml)'))
     .option(cyanFn('rcmpSearchTmp'), yellowFn('表格查询模板(xml)'))
+    .option(cyanFn('rcmpSearchTmpPro'), yellowFn('表格查询模板-兼容rcmpSearchTmp，同时支持上下表格，多tab形式(xml)'))
     .option(cyanFn('rcmpSimpleManage'), yellowFn('表格查询模板(包含新增、修改等)(xml)'))
     .option(cyanFn('rcmpSimpleQuery'), yellowFn('表格查询模板(已废弃)(xml)'))
     .option(magentaFn('非xml相关模板'), yellowFn(''))
