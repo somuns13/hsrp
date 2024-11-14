@@ -69,6 +69,10 @@ npm i hsrp -g
 
 ## ⚙️ 更新日志
 
+### 🔺1.2.8
+
+- 修复`rcmpSearchTmpPro`模板文件；将变量`apiConfig`修改为`apiConfigData`
+
 ### 🔺1.2.7
 
 - 新增`rcmpSearchTmpPro`模板文件，表格查询模板 - 用于生成通用查询页面、多tab查询页面、上下表格（多tab）查询页面等

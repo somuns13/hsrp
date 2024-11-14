@@ -6,7 +6,7 @@ export default {
   extends: rcmpSearchTmpPro,
   data() {
     return {
-      apiConfig: window
+      apiConfigData: window
     }
   }
 }
