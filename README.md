@@ -69,6 +69,10 @@ npm i hsrp -g
 
 ## ⚙️ 更新日志
 
+### 🔺1.2.9
+
+- 修复创建文件时，输入`src/views/xxx`路径时，未正确在对应目录下创建文件
+
 ### 🔺1.2.8
 
 - 修复`rcmpSearchTmpPro`模板文件；将变量`apiConfig`修改为`apiConfigData`

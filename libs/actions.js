@@ -19,7 +19,10 @@ const hsrpCreateFile = (fileList) => {
     }
     // 将//src///views形式的路径修改为/src/views
     params.filePath = (params.filePath || '/src').replace(/\/+/g, '/')
-    if (!params.filePath.startsWith('/src')) {
+
+    if (params.filePath.startsWith('src')) {
+      params.filePath = `/${params.filePath}`
+    } else if (!params.filePath.startsWith('/src')) {
       params.filePath = `/src/${params.filePath}`
     }
 
@@ -42,9 +45,13 @@ const simpleDirectiveCreateFileFn = () => {
   }
   // 将//src///views形式的路径修改为/src/views
   filePath = filePath.replace(/\/+/g, '/')
-  if (!filePath.startsWith('/src')) {
+
+  if (filePath.startsWith('src')) {
+    filePath = `/${filePath}`
+  } else if (!filePath.startsWith('/src')) {
     filePath = `/src/${filePath}`
   }
+
   createVueFile(fileId, fileName, filePath, fileType, _ => {
     isRoute && updateRouteFile(fileId, fileName, filePath)
   })
