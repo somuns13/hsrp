@@ -8,6 +8,7 @@
     :enableTimeConsumingInfoTab="!isInitiate"
     :getFormData="getFormData"
     :startProcessMenuId="startProcessMenuId"
+    :saveSuccessTipsText="saveSuccessTipsText"
     ref="workflowTemp"
     startBtnTxt="发起"
     @getFormInfo="getFormInfo"
@@ -40,6 +41,9 @@ export default {
     },
     startProcessMenuId() {
       return this.mainInfo.menuId;
+    },
+    saveSuccessTipsText() {
+      return this.isInitiate ? '发起成功，如页面状态未更新，请手动刷新' : '成功提交任务，如页面状态未更新，请手动刷新';
     }
   },
   methods: {
@@ -57,8 +61,8 @@ export default {
         newBaseInfo.pre_handle_opinion = newBaseInfo.handle_opinion;
         newBaseInfo.handle_opinion = '';
       }
-      this.baseInfo = { 
-        ...newBaseInfo, 
+      this.baseInfo = {
+        ...newBaseInfo,
         ...baseInfo
       };
     },
