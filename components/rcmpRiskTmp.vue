@@ -5,7 +5,8 @@ export default {
   extends: RcmpRiskTmp,
   data() {
     return {
-      apiConfig: window
+      apiConfig: window,
+      pageId: '%tmp%'
     }
   }
 }

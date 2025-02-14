@@ -12,7 +12,7 @@ const createVueFile = (fileId, fileName, filePath, fileType, cb) => {
     const targetPath = path.join(curPath, `/${filePath}/${fileName}.vue`)
     if (fs.existsSync(compTmpPath)) {
       let fileInfo = fs.readFileSync(compTmpPath, 'utf-8')
-      fileInfo = fileInfo.replace('%tmp%', fileId)
+      fileInfo = fileInfo.replace(/%tmp%/g, fileId)
       createFileFn(fileInfo, targetPath, _ => {
         consoleFn(`\n-----------------------CREATE FILE SUCCESS-----------------------\n\n${fileName}.vue文件创建成功(模板类型为${fileType})\n如文件中存在apiConfig等关于请求相关常量参数，请及时进行调整，否则会导致接口请求异常！\n\n-----------------------------------------------------------------\n`, 'cyan')
         cb && cb()
