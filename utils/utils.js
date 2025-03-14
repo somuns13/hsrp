@@ -7,7 +7,7 @@ const getValueType = (val) => {
 }
 
 /**
- * @name: 43236
+ * @name: somuns
  * @description: 获取yyyyMMdd格式时间
  * @param {String} val 需要格式化的时间
  * @param {String} type 格式化后的形式
@@ -72,7 +72,8 @@ const formatDate = (val, type) => {
 const createArrayFn = len => [...new Array(len).keys()]
 
 /**
- * 43236  获取随机字符串
+ * 获取随机字符串
+ * @name: somuns
  * @param {number} digit 字符串位数
  * @returns {string} random
  */

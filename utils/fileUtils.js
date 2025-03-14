@@ -28,7 +28,7 @@ const colors = {
 }
 
 /**
- * @author: 43236
+ * @author: somuns
  * @description: 设置控制台字体颜色
  * @param str (String) 需要改变颜色的字符串
  * @param color (String) 修改的颜色
@@ -40,7 +40,7 @@ const colorize = (str, color) => {
 }
 
 /**
- * @author: 43236
+ * @author: somuns
  * @description: 设置控制台字体颜色
  * @param str (String) 需要改变颜色的字符串
  * @param color (String) 修改的颜色
@@ -53,7 +53,7 @@ const consoleFn = (str, color, preText = '', lastText = '') => {
 }
 
 /**
- * @author: 43236
+ * @author: somuns
  * @description: 删除文件或文件夹
  * @param fofPath (File | Folder) 需要删除的文件/文件夹路径
  * @Date: 2023-06-14 14:10:49
@@ -92,7 +92,7 @@ const removeFileOrFolder = (fofPath, isTips = true) => {
 }
 
 /**
- * @author: 43236
+ * @author: somuns
  * @description: 复制文件夹或文件至目标目录
  * @param origin (File | Folder) 源文件夹或文件
  * @param target (Folder) 目标文件夹
