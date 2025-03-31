@@ -29,7 +29,6 @@ export default {
       baseInfo: {},
       isInfoSuccess: false,
       viewMode: false,
-      isAuto: false,
     };
   },
   computed: {
@@ -49,10 +48,6 @@ export default {
   methods: {
     getFormInfo(baseInfo, _this) {
       this.viewMode = _this.viewMode;
-      if (this.isInitiate) {
-        const { S_IS_AUTO } = _this.processNodeInfo.constantsProperties;
-        this.isAuto = !!(S_IS_AUTO && S_IS_AUTO === '1');
-      }
       this.getBaseInfo(baseInfo, _this);
     },
     getBaseInfo(baseInfo, _this) {
@@ -121,8 +116,7 @@ export default {
       const params = {
         form_info: JSON.stringify({
           ...formInfo
-        }),
-        is_auto: this.isAuto // 发起流程是否自动跳过第一个节点
+        })
       };
       this.setLoadingStatus(true);
       this.$http.post(`${this.wlServer}/startWithCallBack`, params).catch(_ => {
