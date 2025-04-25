@@ -6,11 +6,9 @@
 export default {
   name: '%tmp%',
   data() {
-    return {
-    }
+    return {}
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
